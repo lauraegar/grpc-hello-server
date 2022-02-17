@@ -1,0 +1,24 @@
+syntax = "proto3";
+package com.example.grpc;
+
+//Request payload
+message HelloRequest {
+  //each message attribute is strongly typed.
+  //you must also assign a "tag number".
+  //Each tag number is unique within the message.
+  string name = 1;
+
+  //this defines a strongly typed list of String
+  repeated string hobbies = 2;
+
+}
+
+message HelloResponse {
+  string greeting = 1;
+}
+
+// define a service, a service can have multiple RPC operations
+service GreetingService {
+  // Define an RPC operation
+  rpc greeting(HelloRequest) returns (HelloResponse);
+}
